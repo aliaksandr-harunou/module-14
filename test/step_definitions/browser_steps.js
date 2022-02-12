@@ -1,4 +1,4 @@
-const {Given,When,Then,setDefaultTimeout} = require('cucumber');
+const {Given,When,Then,setDefaultTimeout} = require('@cucumber/cucumber');
 const {browser} = require('protractor');
 const {expect} = require('chai');
 const PageFactory = require("../po/pageFactory");

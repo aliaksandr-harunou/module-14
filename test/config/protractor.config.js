@@ -1,6 +1,12 @@
 const path = require('path');
 const yargs = require('yargs').argv;
 const reporter = require('cucumber-html-reporter');
+const cucumberJunitConvert = require('cucumber-junit-convert');
+
+const options = {
+  inputJsonFile: path.resolve('./test/reports/report.json'),
+  outputXmlFile: path.resolve('./test/reports/report.xml')
+};
 
 const reporterOptions = {
     theme: 'bootstrap',
@@ -26,15 +32,19 @@ exports.config = {
     directConnect: true,
     cucumberOpts: {
         require:['../step_definitions/*.js'],
-        format: ['json:../reports/report.json'],
+        format: ['json:../reports/report.json','../../node_modules/@cucumber/pretty-formatter'],
         tags: yargs.tags || '@smoke'
     },
     onPrepare: () => {
         browser.waitForAngularEnabled(false);
-        return browser.manage().window().maximize();
+        browser.manage().window().maximize();
+    },
+
+    onComplete: () => {
+        return reporter.generate(reporterOptions);
     },
 
     afterLaunch: () => {
-        return reporter.generate(reporterOptions);
+        return cucumberJunitConvert.convert(options);
     }
 };
