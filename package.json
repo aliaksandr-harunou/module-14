@@ -1,0 +1,35 @@
+{
+  "name": "bdd",
+  "version": "1.0.0",
+  "description": "BDD",
+  "main": "index.js",
+  "scripts": {
+    "test": "protractor ./test/config/protractor.config.js",
+    "postinstall": "webdriver-manager update"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aliaksandr-harunou/module-11.git"
+  },
+  "keywords": [
+    "BDD"
+  ],
+  "author": "Aliaksandr Harunou",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aliaksandr-harunou/module-11/issues"
+  },
+  "homepage": "https://github.com/aliaksandr-harunou/module-11#readme",
+  "dependencies": {
+    "@cucumber/cucumber": "^7.3.2",
+    "@cucumber/pretty-formatter": "^1.0.0-alpha.1",
+    "chai": "^4.3.4",
+    "cucumber-html-reporter": "^5.5.0",
+    "cucumber-junit-convert": "^2.0.0",
+    "fs": "0.0.1-security",
+    "protractor": "^7.0.0",
+    "protractor-cucumber-framework": "^8.2.9",
+    "winston": "^3.3.4",
+    "yargs": "^17.3.1"
+  }
+}
